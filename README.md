@@ -1,5 +1,11 @@
 # RL-Simulation
-Reinforcement Learning Engine Project
+
+Trying to make a Distributed PPO Reinforcement Learning engine from scratch using C++.
+
+## So far...
+
+- defined CPU jobs
+- added workload Generator for simulation
 
 ## Setup
 
