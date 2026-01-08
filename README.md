@@ -6,6 +6,16 @@ Trying to make a Distributed PPO Reinforcement Learning engine from scratch usin
 
 - defined CPU jobs
 - added workload Generator for simulation
+- event engine for scheduler
+- simulation for CPU
+- FIFO Scheduler
+- Metrics
+
+## Next...
+
+- add PPO algorithm
+
+
 
 ## Setup
 
