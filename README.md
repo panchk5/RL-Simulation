@@ -1,6 +1,6 @@
 # RL-Simulation
 
-Trying to make a Distributed PPO Reinforcement Learning engine from scratch using C++.
+Making a Distributed PPO Reinforcement Learning engine from scratch using C++.
 
 ## So far...
 
