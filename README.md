@@ -10,10 +10,41 @@ Making a Distributed PPO Reinforcement Learning engine from scratch using C++.
 - simulation for CPU
 - FIFO Scheduler
 - Metrics
+- PPO Algorithm (Simple layer (forward fetch))
+- Training System (Parallel Agents, Episodes, Shared Policy)
 
 ## Next...
 
-- add PPO algorithm
+- Optimize PPO algorithm
+- Distribute runners are run in real-time simulation for many minutes
+
+## Training & Evaluation (Quick Commands)
+
+Build and run the trainer (produces `ppo_model.txt`):
+
+```bash
+g++ -std=c++17 -O2 -I. \
+	Scheduler/Agent/train_ppo.cpp Scheduler/Agent/ppo_agent.cpp Scheduler/Agent/agent.cpp \
+	Scheduler/FIFO/fifo.cpp Environment/Simulation/simulation.cpp \
+	Environment/Event/event.cpp Environment/Jobs/workloadGen.cpp -o train_ppo
+
+./train_ppo
+```
+
+Build and run the FIFO vs PPO comparison test (loads `ppo_model.txt` if present):
+
+```bash
+g++ -std=c++17 -O2 -I. \
+	Scheduler/Scheduler_Tests/test_ppo_vs_fifo.cpp Scheduler/Agent/ppo_agent.cpp Scheduler/Agent/agent.cpp \
+	Scheduler/FIFO/fifo.cpp Environment/Simulation/simulation.cpp \
+	Environment/Event/event.cpp Environment/Jobs/workloadGen.cpp -o test_ppo_vs_fifo
+
+./test_ppo_vs_fifo
+```
+
+Notes:
+- If `ppo_model.txt` exists it will be loaded for the "trained" run; otherwise the test runs an untrained agent for comparison.
+- On macOS/linux use the commands above. On Windows use an equivalent build command (MSYS2/MinGW recommended).
 
 
 
