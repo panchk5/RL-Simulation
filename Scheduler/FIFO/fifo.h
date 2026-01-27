@@ -4,6 +4,7 @@
 #include "../../Environment/Event/event.h"
 #include <deque>
 #include <unordered_map>
+#include <vector>
 #include <cstdint>
 
 class FIFOScheduler {
@@ -19,6 +20,8 @@ public:
     // Returns the job to run and the time slice (or remaining CPU if less)
     // Returns nullptr if no job available
     std::pair<Job*, double> schedule_next(double current_time, double time_slice);
+    // Schedule a specific job by ID if it's in the ready queue
+    std::pair<Job*, double> schedule_job(uint64_t job_id, double current_time, double time_slice);
     
     // Check if there are jobs in ready queue
     bool has_ready_jobs() const;
@@ -32,6 +35,13 @@ public:
     // Update job after running (decrements remaining_cpu)
     // Returns true if job completed, false otherwise
     bool update_job_after_run(uint64_t job_id, double run_time);
+    
+    // Get job by ID (for Agent API)
+    Job* get_job(uint64_t job_id);
+    const Job* get_job(uint64_t job_id) const;
+    
+    // Get IDs of jobs in ready queue (for Agent API)
+    std::vector<uint64_t> get_ready_job_ids() const;
     
 private:
     std::deque<Job> ready_queue;  // FIFO queue of ready jobs
