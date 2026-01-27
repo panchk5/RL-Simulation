@@ -35,7 +35,7 @@ Build and run the FIFO vs PPO comparison test (loads `ppo_model.txt` if present)
 
 ```bash
 g++ -std=c++17 -O2 -I. \
-	Scheduler/Scheduler_Tests/test_ppo_vs_fifo.cpp Scheduler/Agent/ppo_agent.cpp Scheduler/Agent/agent.cpp \
+	Scheduler/Scheduler_Tests/compare_RL_vs_fifo.cpp Scheduler/Agent/ppo_agent.cpp Scheduler/Agent/agent.cpp \
 	Scheduler/FIFO/fifo.cpp Environment/Simulation/simulation.cpp \
 	Environment/Event/event.cpp Environment/Jobs/workloadGen.cpp -o test_ppo_vs_fifo
 
